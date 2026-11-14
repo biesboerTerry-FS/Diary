@@ -4,9 +4,7 @@ import matter from 'gray-matter';
 
 function extractLegacyTitle(rawContent, slug) {
   const headingMatch = rawContent.match(/^\s*#\s+(.+)$/m);
-  if (headingMatch) {
-    return headingMatch[1].trim();
-  }
+  if (headingMatch) return headingMatch[1].trim();
 
   const firstNonEmptyLine = rawContent
     .split('\n')
@@ -35,9 +33,7 @@ function extractLegacyBody(rawContent) {
     (line, i) => i > 0 && line.match(/\*\*Date:\*\*/)
   );
 
-  if (contentStart === -1) {
-    return rawContent.trim();
-  }
+  if (contentStart === -1) return rawContent.trim();
 
   return lines
     .slice(contentStart + 1)
@@ -47,15 +43,45 @@ function extractLegacyBody(rawContent) {
 
 function normalizeDateValue(dateValue) {
   if (!dateValue) return 'Unknown';
-  if (dateValue instanceof Date) {
-    return dateValue.toISOString().split('T')[0];
-  }
+  if (dateValue instanceof Date) return dateValue.toISOString().split('T')[0];
   return String(dateValue);
 }
 
-function toTimestamp(dateString) {
+export function toTimestamp(dateString) {
   const timestamp = Date.parse(dateString);
   return Number.isNaN(timestamp) ? 0 : timestamp;
+}
+
+function stripMarkdown(text = '') {
+  return text
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/[*_~>#-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function getReadingTime(text = '') {
+  const words = stripMarkdown(text).split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+function getExcerpt(text = '', length = 180) {
+  const plain = stripMarkdown(text);
+  if (plain.length <= length) return plain;
+  return `${plain.slice(0, length).trimEnd()}…`;
+}
+
+function normalizeTags(tags) {
+  if (!tags) return [];
+  if (Array.isArray(tags)) return tags.map((t) => String(t).trim()).filter(Boolean);
+  return String(tags)
+    .split(',')
+    .map((t) => t.trim())
+    .filter(Boolean);
 }
 
 export async function getPosts() {
@@ -80,23 +106,38 @@ export async function getPosts() {
         const resolvedDate = frontmatterDate
           ? normalizeDateValue(frontmatterDate)
           : extractLegacyDate(rawContent);
+        const content = hasLegacyHeader
+          ? extractLegacyBody(rawContent)
+          : parsed.content.trim();
+        const title = frontmatterTitle || extractLegacyTitle(rawContent, slug);
+        const tags = normalizeTags(parsed.data?.tags);
+        const description =
+          parsed.data?.description || getExcerpt(content, 160);
 
         return {
           slug,
-          title: frontmatterTitle || extractLegacyTitle(rawContent, slug),
+          title,
           date: resolvedDate,
-          content: hasLegacyHeader
-            ? extractLegacyBody(rawContent)
-            : parsed.content.trim(),
+          content,
+          tags,
+          description,
+          excerpt: getExcerpt(content, 220),
+          readingTime: getReadingTime(content),
         };
       })
   );
 
-  
   return posts.sort((a, b) => toTimestamp(b.date) - toTimestamp(a.date));
 }
 
 export async function getPostBySlug(slug) {
   const posts = await getPosts();
   return posts.find((post) => post.slug === slug);
+}
+
+export async function getAllTags() {
+  const posts = await getPosts();
+  return [...new Set(posts.flatMap((p) => p.tags || []))].sort((a, b) =>
+    a.localeCompare(b)
+  );
 }

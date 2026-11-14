@@ -1,53 +1,67 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+
   html {
     @apply scroll-smooth;
   }
 
   body {
-    @apply text-gray-900 transition-colors duration-300;
+    @apply transition-colors duration-300;
     background-color: #ccd1d8;
+    color: #111827;
   }
 
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #302c23;
-      @apply text-gray-100;
-    }
+  .dark body {
+    background-color: #302c23;
+    color: #f3f4f6;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-semibold leading-tight tracking-tight;
   }
 
-  h1 {
-    @apply text-4xl font-bold md:text-3xl;
-  }
-
-  h2 {
-    @apply text-2xl;
-  }
-
-  h3 {
-    @apply text-xl;
-  }
-
-  p {
-    @apply mb-4;
-  }
+  h1 { @apply text-4xl font-bold md:text-3xl; }
+  h2 { @apply text-2xl; }
+  h3 { @apply text-xl; }
+  p { @apply mb-4; }
 
   a {
-    @apply text-gray-100 no-underline transition-colors duration-200 hover:text-orange-400;
+    @apply underline-offset-4 transition-colors duration-200;
   }
 
-  .header-nav-link::after {
-    content: ' ->';
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-2 ring-orange-400 ring-offset-2 ring-offset-transparent;
   }
 
+  .prose pre {
+    @apply overflow-x-auto rounded-lg border border-gray-300 bg-gray-100 p-4 text-sm text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100;
+  }
+  .prose code {
+    @apply rounded bg-gray-200 px-1 py-0.5 text-[0.9em] text-gray-900 dark:bg-gray-800 dark:text-gray-100;
+  }
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+  .prose img {
+    @apply rounded-lg;
+  }
+  .prose table {
+    @apply w-full border-collapse;
+  }
+  .prose th, .prose td {
+    @apply border border-gray-300 px-3 py-2 dark:border-gray-700;
+  }
 }

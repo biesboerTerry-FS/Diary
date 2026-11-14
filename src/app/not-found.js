@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <main className="max-w-3xl px-6 py-12 mx-auto md:py-16">
+    <main className="max-w-5xl px-4 py-12 mx-auto sm:px-6 md:py-16">
       <h1 className="mb-3 text-gray-900 dark:text-white">404</h1>
       <p className="mb-8 text-orange-700 dark:text-orange-300">
         This page could not be found.
@@ -14,13 +14,13 @@ export default function NotFound() {
       <div className="flex flex-col gap-2">
         <Link
           href="/"
-          className="inline-block text-sm text-gray-100 transition-colors dark:text-gray-100 hover:text-orange-400 dark:hover:text-orange-400"
+          className="inline-block text-sm text-orange-700 transition-colors hover:text-orange-500 dark:text-gray-100 dark:hover:text-orange-400"
         >
           to home
         </Link>
         <Link
           href="/archive"
-          className="inline-block text-sm text-gray-100 transition-colors dark:text-gray-100 hover:text-orange-400 dark:hover:text-orange-400"
+          className="inline-block text-sm text-orange-700 transition-colors hover:text-orange-500 dark:text-gray-100 dark:hover:text-orange-400"
         >
           to archive
         </Link>

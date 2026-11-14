@@ -56,11 +56,11 @@ export default async function PostPage({ params }) {
 
   if (!post) {
     return (
-      <main className="max-w-3xl px-6 py-12 mx-auto md:py-16">
+      <main className="max-w-5xl px-4 py-12 mx-auto sm:px-6 md:py-16">
         <h1 className="text-gray-900 dark:text-white">Post not found</h1>
         <Link
           href="/archive"
-          className="inline-block mb-8 text-sm text-gray-100 transition-colors dark:text-gray-100 hover:text-orange-400 dark:hover:text-orange-400"
+          className="inline-block mb-8 text-sm text-orange-700 transition-colors hover:text-orange-500 dark:text-gray-100 dark:hover:text-orange-400"
         >
           to archive
         </Link>
@@ -75,17 +75,17 @@ export default async function PostPage({ params }) {
     currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 
   return (
-    <article className="max-w-3xl px-6 py-12 mx-auto md:py-16">
+    <article className="max-w-5xl px-4 py-12 mx-auto sm:px-6 md:py-16">
       <div className="flex flex-col gap-2 mb-8">
         <Link
           href="/archive"
-          className="inline-block text-sm text-gray-100 transition-colors dark:text-gray-100 hover:text-orange-400 dark:hover:text-orange-400"
+          className="inline-block text-sm text-orange-700 transition-colors hover:text-orange-500 dark:text-gray-100 dark:hover:text-orange-400"
         >
           to archive
         </Link>
         <Link
           href="/"
-          className="inline-block text-sm text-gray-100 transition-colors dark:text-gray-100 hover:text-orange-400 dark:hover:text-orange-400"
+          className="inline-block text-sm text-orange-700 transition-colors hover:text-orange-500 dark:text-gray-100 dark:hover:text-orange-400"
         >
           to home
         </Link>
@@ -113,7 +113,7 @@ export default async function PostPage({ params }) {
         {prevPost ? (
           <Link
             href={`/blog/${prevPost.slug}`}
-            className="flex items-center gap-2 text-gray-100 transition-colors dark:text-gray-100 hover:text-orange-400 dark:hover:text-orange-400"
+            className="flex items-center gap-2 text-orange-700 transition-colors hover:text-orange-500 dark:text-gray-100 dark:hover:text-orange-400"
             title={prevPost.title}
           >
             <svg
@@ -149,7 +149,7 @@ export default async function PostPage({ params }) {
         {nextPost ? (
           <Link
             href={`/blog/${nextPost.slug}`}
-            className="flex items-center justify-end gap-2 text-right text-gray-100 transition-colors dark:text-gray-100 hover:text-orange-400 dark:hover:text-orange-400"
+            className="flex items-center justify-end gap-2 text-right text-orange-700 transition-colors hover:text-orange-500 dark:text-gray-100 dark:hover:text-orange-400"
             title={nextPost.title}
           >
             <span
