@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { getImagePath } from '../lib/imagePath';
 
 export default function CalendarImage({ dateString }) {
@@ -12,13 +13,13 @@ export default function CalendarImage({ dateString }) {
 
   return (
     <div className="flex flex-col items-center">
-      <img
-        src={getImagePath(`${day}.calendar.png`)}
+      <Image src={getImagePath(`${day}.calendar.png`)}
         alt={`Calendar - ${day}`}
         width={24}
         height={24}
-        className="dark:invert"
-      />
+        className="dark:invert"/>
+        
+      
     </div>
   );
 }
