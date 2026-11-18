@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { siteConfig } from '../lib/site';
+import ProjectThumbnail from '../components/ProjectThumbnail';
 
 export const metadata = {
   title: 'Projects',
@@ -24,7 +23,7 @@ const projects = [
     outcomes: [
       'A live site visitors can browse and an admin experience for content management.',
     ],
-    repo: 'https://github.com/biesboerTerry-FS/lindberghUltimate',
+    repo: 'https://github.com/biesboerTerry-FS/LindberghUltimateFrisbee',
     image: '/screenshots/lindbergh-main.jpg',
     views: [
       { label: 'Front', url: 'https://lindberghultimatefrisbee-7mq7brp51-terry-biesboers-projects.vercel.app' },
@@ -34,27 +33,26 @@ const projects = [
     missing: [],
   },
   {
-    name: 'Diary',
+    name: 'thatDevTerry Portfolio',
     role: 'Design & Frontend Development',
     timeframe: '2026',
-    stack: ['Next.js', 'React', 'JavaScript', 'Vercel'],
+    stack: ['React', 'React Router', 'Sass', 'JavaScript', 'Vercel'],
     summary:
-      'A personal diary site built with Next.js, featuring dated entries and sections like Archive, About, Projects, and Now.',
+      'A personal portfolio site for thatDevTerry that presents selected work, background, and contact details in a focused single-page experience.',
     problem:
-      'I wanted a content-driven site that could grow with regular writing while also serving as a portfolio showcase.',
+      'A clear, polished portfolio was needed to showcase projects, education, and availability in one easy-to-navigate place.',
     contributions: [
-      'Built a Next.js App Router site with Markdown/MDX content support.',
-      'Created dedicated sections for archive, about, projects, and now.',
-      'Deployed to Vercel with static-export compatibility.',
+      'Built a responsive React single-page app with routing for portfolio sections.',
+      'Styled the interface with Sass and component-based layouts for consistent visual design.',
+      'Deployed the site to Vercel with a dedicated /portfolio route.',
     ],
     outcomes: [
-      'A maintainable personal publishing platform that doubles as a portfolio.',
+      'A live portfolio that introduces thatDevTerry and links to selected projects.',
     ],
-    repo: 'https://github.com/biesboerTerry-FS/Diary',
-    image: '/screenshots/diary-main.jpg',
+    repo: 'https://github.com/biesboerTerry-FS/thatDevTerry.git',
+    image: '/screenshots/thatdevterry-main.png',
     views: [
-      { label: 'Front', url: 'https://diary-jveghlgqs-terry-biesboers-projects.vercel.app' },
-      { label: 'Mobile', url: 'https://diary-mobile-64f7xfgxt-terry-biesboers-projects.vercel.app' },
+      { label: 'Front', url: 'https://portfolio-three-pink-69.vercel.app/portfolio' },
     ],
     missing: [],
   },
@@ -241,17 +239,11 @@ export default function ProjectsPage() {
         {projects.map((project) => (
           <article key={project.name} className="overflow-hidden border rounded-xl border-gray-400/50 bg-white/30 dark:border-gray-700/60 dark:bg-black/10">
             {project.image && (
-              <a href={project.views[0]?.url || project.repo} target="_blank" rel="noreferrer" className="block">
-                <div className="relative w-full h-64 bg-gray-100 dark:bg-gray-900 sm:h-80 lg:h-96">
-                  <Image
-                    src={project.image}
-                    alt={`${project.name} preview`}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 100vw, 1280px"
-                  />
-                </div>
-              </a>
+              <ProjectThumbnail
+                src={project.image}
+                alt={project.name}
+                liveUrl={project.views[0]?.url || project.repo}
+              />
             )}
             <div className="p-6 sm:p-8">
               <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
