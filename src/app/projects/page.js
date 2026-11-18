@@ -50,7 +50,7 @@ const projects = [
       'A live portfolio that introduces thatDevTerry and links to selected projects.',
     ],
     repo: 'https://github.com/biesboerTerry-FS/thatDevTerry.git',
-    image: '/screenshots/thatdevterry-main.png',
+    image: '/screenshots/thatdevterry-main.jpg',
     views: [
       { label: 'Front', url: 'https://portfolio-three-pink-69.vercel.app/portfolio' },
     ],
@@ -207,7 +207,7 @@ const projects = [
       'Repository established; live demo coming soon.',
     ],
     repo: 'https://github.com/biesboerTerry-FS/HolisticAsF',
-    image: '/placeholder.svg',
+    image: '/screenshots/holisticasf-main.jpg',
     views: [
       { label: 'Front', url: 'https://holisticasf-client-npki4n8q4-terry-biesboers-projects.vercel.app' },
       { label: 'Back', url: 'https://holisticasf-server-gggdx8mz9-terry-biesboers-projects.vercel.app' },
