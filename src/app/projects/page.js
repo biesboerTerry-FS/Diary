@@ -53,8 +53,8 @@ const projects = [
     repo: 'https://github.com/biesboerTerry-FS/Diary',
     image: '/screenshots/diary-main.jpg',
     views: [
-      { label: 'Front', url: 'https://diary-ny9lougmh-terry-biesboers-projects.vercel.app' },
-      { label: 'Mobile', url: 'https://diary-mobile-9ohj1omay-terry-biesboers-projects.vercel.app' },
+      { label: 'Front', url: 'https://diary-jveghlgqs-terry-biesboers-projects.vercel.app' },
+      { label: 'Mobile', url: 'https://diary-mobile-64f7xfgxt-terry-biesboers-projects.vercel.app' },
     ],
     missing: [],
   },
