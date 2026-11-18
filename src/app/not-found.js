@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <main className="max-w-5xl px-4 py-12 mx-auto sm:px-6 md:py-16">
+    <main className="max-w-7xl px-4 py-12 mx-auto sm:px-6 md:py-16">
       <h1 className="mb-3 text-gray-900 dark:text-white">404</h1>
       <p className="mb-8 text-orange-700 dark:text-orange-300">
         This page could not be found.

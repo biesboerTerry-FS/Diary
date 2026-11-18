@@ -1,14 +1,14 @@
 export const siteConfig = {
-  name: 'lifestyles of theLiftedGifted',
-  title: 'diary of theLiftedGifted',
+  name: 'thatDevTerry',
+  title: 'diary of thatDevTerry',
   description:
-    'A personal diary and portfolio by theLiftedGifted featuring writing, projects, and reflections on technology, creativity, and growth.',
-  author: 'theLiftedGifted',
-  email: 'hello@example.com',
-  github: 'https://github.com/theLiftedGifted',
-  linkedin: 'https://www.linkedin.com/in/theliftedgifted',
+    'A personal diary and portfolio by Terry Biesboer (thatDevTerry) featuring writing, projects, and reflections on technology, creativity, and growth.',
+  author: 'Terry Biesboer',
+  email: 'terry@thatdudeterry.com',
+  github: 'https://github.com/biesboerTerry-FS',
+  linkedin: 'https://www.linkedin.com/in/terrybiesboer',
   siteUrl:
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://theliftedgifted.github.io',
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://biesboerterry-fs.github.io',
 };
 
 export function absoluteUrl(path = '/') {

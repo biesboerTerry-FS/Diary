@@ -56,7 +56,7 @@ export default async function PostPage({ params }) {
 
   if (!post) {
     return (
-      <main className="max-w-5xl px-4 py-12 mx-auto sm:px-6 md:py-16">
+      <main className="max-w-7xl px-4 py-12 mx-auto sm:px-6 md:py-16">
         <h1 className="text-gray-900 dark:text-white">Post not found</h1>
         <Link
           href="/archive"
@@ -75,7 +75,7 @@ export default async function PostPage({ params }) {
     currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 
   return (
-    <article className="max-w-5xl px-4 py-12 mx-auto sm:px-6 md:py-16">
+    <article className="max-w-7xl px-4 py-12 mx-auto sm:px-6 md:py-16">
       <div className="flex flex-col gap-2 mb-8">
         <Link
           href="/archive"

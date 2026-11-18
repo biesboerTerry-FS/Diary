@@ -7,12 +7,13 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="max-w-5xl px-4 py-10 mx-auto sm:px-6 md:py-14">
+    <main className="max-w-7xl px-4 py-10 mx-auto sm:px-6 md:py-14">
       <header className="mb-10">
         <p className="mb-2 text-sm font-medium tracking-wide uppercase text-orange-700 dark:text-orange-300">Let’s connect</p>
         <h1 className="mb-3 text-gray-900 dark:text-white">Contact</h1>
         <p className="max-w-3xl text-lg text-orange-700 dark:text-orange-300">
           Interested in the work, have feedback on the site, or want to talk about a project or collaboration? I’d be glad to hear from you.
+          I’m currently completing my Bachelor’s in Computer Science for Web Design & Development at Full Sail University and actively seeking opportunities in the field.
         </p>
       </header>
 
@@ -27,15 +28,13 @@ export default function ContactPage() {
               </a>
             </li>
             <li>
+              <strong>Location:</strong>{' '}
+              <span className="text-orange-700 dark:text-orange-300">San Diego, CA</span>
+            </li>
+            <li>
               <strong>GitHub:</strong>{' '}
               <a href={siteConfig.github} target="_blank" rel="noreferrer" className="text-orange-700 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-400">
                 {siteConfig.github}
-              </a>
-            </li>
-            <li>
-              <strong>LinkedIn:</strong>{' '}
-              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" className="text-orange-700 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-400">
-                {siteConfig.linkedin}
               </a>
             </li>
           </ul>
@@ -64,9 +63,6 @@ export default function ContactPage() {
               Share feedback
             </a>
           </div>
-          <p className="mt-4 text-sm text-gray-700 dark:text-gray-300">
-            Update placeholder details in <code>src/app/lib/site.js</code> before publishing publicly.
-          </p>
         </div>
       </section>
 
@@ -75,6 +71,8 @@ export default function ContactPage() {
           <h2 className="mb-3 text-gray-900 dark:text-white">Good reasons to reach out</h2>
           <ul className="space-y-2 text-gray-800 list-disc list-inside dark:text-gray-200">
             <li>Frontend development or UI implementation opportunities</li>
+            <li>Full-stack projects using React, Next.js, Node.js, Express, or MongoDB</li>
+            <li>Internships or entry-level roles for a soon-to-graduate web developer</li>
             <li>Content-driven website or portfolio/blog projects</li>
             <li>Collaboration on design + development work</li>
             <li>Feedback, suggestions, or questions about this site</li>

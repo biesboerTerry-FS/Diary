@@ -3,8 +3,23 @@ import { siteConfig } from '../lib/site';
 
 export const metadata = {
   title: 'About',
-  description: `About ${siteConfig.author} — background, skills, process, and what this portfolio demonstrates.`,
+  description: `About ${siteConfig.author} — background, education, skills, and what this portfolio demonstrates.`,
 };
+
+const skills = [
+  'JavaScript',
+  'React',
+  'Next.js',
+  'Node.js',
+  'Express',
+  'MongoDB',
+  'HTML & CSS',
+  'SCSS',
+  'Tailwind CSS',
+  'Expo',
+  'Vercel',
+  'Git',
+];
 
 const principles = [
   {
@@ -27,13 +42,14 @@ const principles = [
 
 export default function AboutPage() {
   return (
-    <main className="max-w-5xl px-4 py-10 mx-auto sm:px-6 md:py-14">
+    <main className="max-w-7xl px-4 py-10 mx-auto sm:px-6 md:py-14">
       <header className="mb-10">
         <p className="mb-2 text-sm font-medium tracking-wide uppercase text-orange-700 dark:text-orange-300">Portfolio & Diary</p>
         <h1 className="mb-3 text-gray-900 dark:text-white">About</h1>
         <p className="max-w-3xl text-lg text-orange-700 dark:text-orange-300">
-          I’m {siteConfig.author}, a web-focused creator building thoughtful digital experiences through code, design, and writing.
-          This site blends a daily diary with a portfolio to show both my process and my progress over time.
+          I’m {siteConfig.author}, a full-stack developer from San Diego, CA, currently completing my Bachelor’s in
+          Computer Science for Web Design & Development at Full Sail University. I’m actively seeking opportunities
+          in web development and related fields.
         </p>
       </header>
 
@@ -41,9 +57,12 @@ export default function AboutPage() {
         <div className="space-y-4 text-gray-800 dark:text-gray-200">
           <h2 className="text-gray-900 dark:text-white">Background</h2>
           <p>
-            My work sits at the intersection of frontend development and content-driven design. I enjoy taking ideas from rough notes
-            to polished, usable interfaces—whether that means building a blog system, shaping a project page, or refining the details
-            that make a site feel cohesive.
+            I’m Terry, a full-stack developer based in San Diego, CA. I enjoy building thoughtful digital experiences
+            across the stack—from responsive frontends with React and Next.js to backend services with Node.js, Express, and MongoDB.
+          </p>
+          <p>
+            I’m currently pursuing a Bachelor of Science in Computer Science with a focus on Web Design & Development at Full Sail University,
+            where I’ve strengthened my skills in software engineering, user experience, and modern web technologies.
           </p>
           <p>
             The diary side of this site captures consistency: documenting what I’m learning, what I’m building, and how my thinking evolves.
@@ -57,12 +76,15 @@ export default function AboutPage() {
 
         <aside className="p-6 border rounded-xl border-gray-400/50 bg-white/30 dark:border-gray-700/60 dark:bg-black/10">
           <h2 className="mb-3 text-gray-900 dark:text-white">Skills & tools</h2>
-          <ul className="space-y-2 text-gray-800 list-disc list-inside dark:text-gray-200">
-            <li><strong>Frontend:</strong> Next.js (App Router), React, JavaScript, semantic HTML</li>
-            <li><strong>Styling:</strong> Tailwind CSS, responsive design, theming, layout systems</li>
-            <li><strong>Content:</strong> Markdown/MDX pipelines, frontmatter, metadata, archive organization</li>
-            <li><strong>Quality:</strong> accessibility-minded UI, SEO basics, performance-aware static builds</li>
-            <li><strong>Workflow:</strong> iterative development, component reuse, deployment-ready static export</li>
+          <ul className="flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <li
+                key={skill}
+                className="px-2.5 py-1 text-sm rounded-full bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-100"
+              >
+                {skill}
+              </li>
+            ))}
           </ul>
         </aside>
       </section>
@@ -99,10 +121,10 @@ export default function AboutPage() {
       </section>
 
       <section className="p-6 mt-12 border rounded-xl border-gray-400/50 bg-white/30 dark:border-gray-700/60 dark:bg-black/10">
-        <h2 className="mb-3 text-gray-900 dark:text-white">Currently open to</h2>
+        <h2 className="mb-3 text-gray-900 dark:text-white">Currently open to opportunities</h2>
         <p className="text-gray-800 dark:text-gray-200">
-          I’m interested in opportunities and collaborations involving frontend development, content-driven websites, UI implementation,
-          and portfolio/product storytelling. If you’d like to connect, the best place to start is the contact page.
+          I’m interested in internships, entry-level roles, and collaborations involving frontend development, full-stack web applications,
+          content-driven websites, UI implementation, and portfolio/product storytelling. If you’d like to connect, the best place to start is the contact page.
         </p>
         <div className="flex flex-wrap gap-4 mt-4 text-sm">
           <Link href="/projects" className="text-orange-700 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-400">View projects →</Link>

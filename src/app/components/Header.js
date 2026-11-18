@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <header className="border-b border-gray-400/60 dark:border-gray-700/60" role="banner">
-      <div className="flex flex-col gap-4 max-w-5xl px-4 py-4 mx-auto sm:px-6">
+      <div className="flex flex-col gap-4 max-w-7xl px-4 py-4 mx-auto sm:px-6">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3 no-underline">
             <Image
@@ -45,7 +45,7 @@ export default function Header() {
               style={{ borderWidth: '2px', borderColor: '#302C23' }}
             />
             <span className="text-sm font-semibold text-gray-900 dark:text-gray-100 sm:text-base">
-              diary of theLiftedGifted
+              {normalized.startsWith('/projects') ? 'thatDevTerry' : 'diary of thatDevTerry'}
             </span>
           </Link>
           <ThemeToggle />
