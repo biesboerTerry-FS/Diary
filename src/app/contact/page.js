@@ -1,4 +1,5 @@
 import { siteConfig } from '../lib/site';
+import CopyEmailButton from '../components/CopyEmailButton';
 
 export const metadata = {
   title: 'Contact',
@@ -62,6 +63,7 @@ export default function ContactPage() {
             >
               Share feedback
             </a>
+            <CopyEmailButton email={siteConfig.email} />
           </div>
         </div>
       </section>

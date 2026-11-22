@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import { ToastProvider } from "./components/ToastProvider";
+import { getSearchIndex } from "./lib/search-index";
 import { siteConfig } from "./lib/site";
 
 const geistSans = Geist({
@@ -37,7 +39,9 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const searchItems = await getSearchIndex();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -50,8 +54,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-900 dark:text-gray-100`}
       >
-        <Header />
-        <div>{children}</div>
+        <ToastProvider>
+          <Header searchItems={searchItems} />
+          <div>{children}</div>
+        </ToastProvider>
       </body>
     </html>
   );

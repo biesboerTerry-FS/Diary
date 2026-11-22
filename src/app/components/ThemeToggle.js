@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useSyncExternalStore } from 'react';
+import { useToast } from './ToastProvider';
 
 function getIsDark() {
   if (typeof document === 'undefined') return false;
@@ -28,13 +29,16 @@ function getServerIsDark() {
 
 export default function ThemeToggle() {
   const dark = useSyncExternalStore(subscribe, getIsDark, getServerIsDark);
+  const toast = useToast();
 
   useEffect(() => {
     document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
   }, [dark]);
 
   function toggle() {
-    setTheme(!getIsDark());
+    const nextDark = !getIsDark();
+    setTheme(nextDark);
+    toast(nextDark ? 'Dark mode enabled' : 'Light mode enabled', 'accent');
   }
 
   return (

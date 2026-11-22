@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { getImagePath } from '../lib/imagePath';
 import ThemeToggle from './ThemeToggle';
+import GlobalSearch from './GlobalSearch';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -15,7 +16,7 @@ const links = [
   { href: '/contact', label: 'Contact' },
 ];
 
-export default function Header() {
+export default function Header({ searchItems = [] }) {
   const pathname = usePathname() || '/';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const normalized =
@@ -48,7 +49,10 @@ export default function Header() {
               {normalized.startsWith('/projects') ? 'thatDevTerry' : 'diary of thatDevTerry'}
             </span>
           </Link>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <GlobalSearch items={searchItems} />
+            <ThemeToggle />
+          </div>
         </div>
         <nav aria-label="Primary" className="flex flex-wrap gap-x-4 gap-y-2 text-sm sm:text-base">
           {links.map((link) => {
